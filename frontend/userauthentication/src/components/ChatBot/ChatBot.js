@@ -1,8 +1,16 @@
 import "@iconscout/unicons/css/line.css";
 import React, { useState } from "react";
 import "./ChatBot.css";
+import Dashboard from "../Dashboard/Dashboard";
 const Chatbot = (userid) => {
   const [Page, setPage] = useState("ChatBot");
+    const [showDashboard, setShowDashboard] = useState(false); // State to manage dashboard visibility
+
+  // Function to close the Chatbot and go back to Dashboard
+  const handleCloseChatbot = () => {
+    setShowDashboard(true);  // Set state to show the Dashboard
+  };
+
   const CurrentChat = (userid) => {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState("");
@@ -11,9 +19,10 @@ const Chatbot = (userid) => {
         const newMessage = { text: input, sender: "user" };
         setMessages([...messages, newMessage]);
         setInput("");
+       
         const fetchResponse = async () => {
           try {
-            const response = await fetch("http://localhost:8083/api/send", {
+             const response = await fetch("http://localhost:8083/api/send", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -49,7 +58,7 @@ const Chatbot = (userid) => {
         fetchResponse();
       }
     };
-
+    
     return (
       <div className="chatbot-container" id="unique-chatbot-container">
         <div className="chatbot-header" id="unique-chatbot-header">
@@ -170,7 +179,6 @@ const Chatbot = (userid) => {
   };
   return (
     <>
-      {/* The userId itself is an Object so i bending The new userid Object and it's values userid's object values , so it userid's value*/}
       {Page === "ChatBot" && <CurrentChat userid={userid.userid}></CurrentChat>}
       {Page === "History" && (
         <ChatBotHistory userid={userid.userid}></ChatBotHistory>

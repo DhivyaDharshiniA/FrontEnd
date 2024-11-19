@@ -8,15 +8,15 @@
   --warning-color: #eab308;
   --danger-color: #ef4444;
   --background: #ffffff;
-  --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1),
-    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --transition: all 0.3s ease;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+
+html, body {
+  height: 100%; /* Ensure the page takes the full height */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-y: auto; /* Enable vertical scrolling */
 }
 
 body {
@@ -24,26 +24,46 @@ body {
   background-color: #f8fafc;
   color: var(--text-primary);
   line-height: 1.5;
+  padding-bottom: 20px; /* Add padding at the bottom of the page */
 }
+/* Make sure your header is positioned correctly */
+
+/* Ensure container takes full height of the viewport */
+.main-content {
+  overflow-y: auto; /* Allow vertical scrolling if content overflows */
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #0ea5e9;
+  width: 100%;
+}
+
 
 /* Header Styles */
 .header {
+  display: flex;
   background-color: var(--background);
   padding: 1rem 2rem;
   box-shadow: var(--card-shadow);
-  position: sticky;
   top: 0;
   z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
 }
-
 .logo {
+  /* display: flex;
+  align-items: center;
+  gap: 1rem; */
   display: flex;
   align-items: center;
-  gap: 1rem;
+  color: #fff;
+  text-decoration: none;
 }
 
 .logo-circle {
-  width: 40px;
+  /* width: 40px;
   height: 40px;
   background: var(--primary-color);
   color: white;
@@ -52,7 +72,18 @@ body {
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.2rem; */
+  background-color: #fff;
+  color: #4caf50;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 18px;
+  margin-right: 10px;
 }
 
 .logo h1 {
@@ -64,6 +95,7 @@ body {
   display: flex;
   gap: 2rem;
   list-style: none;
+  padding-left: 200px;
   margin-top: 1rem;
 }
 
@@ -81,83 +113,140 @@ body {
   background-color: var(--secondary-color);
 }
 
-/* Main Content Styles */
+
 .main-content {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #e8f9f2; /* Soft pastel background */
+  padding: 20px;
+  font-family: "Inter", system-ui, sans-serif;
 }
 
+/* Welcome Card Styling */
 .welcome-card {
-  background-color: var(--background);
-  border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: var(--card-shadow);
-}
-
-.card-content {
+  margin-top: 300px;
+  background: #ffffff; /* White background for contrast */
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  width: 100%;
+  padding: 20px; /* Reduced padding */
   text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
 }
 
-.subtitle {
-  color: var(--text-secondary);
-  margin: 1rem 0 2rem;
+/* Main Header Styling */
+.card-content h2 {
+  font-size: 1.5rem; /* Even smaller font size for main heading */
+  color: #3a3a3a; /* Dark gray for the main header */
+  margin-bottom: 15px;
+  font-weight: 500;
 }
 
-/* Feature Grid */
+/* Subtitle Styling */
+.card-content .subtitle {
+  font-size: 1rem; /* Smaller font for subtitle */
+  color: #555555; /* Light gray for subtitles */
+  margin-bottom: 15px;
+  font-weight: 400;
+}
+
+/* Feature Grid Styling */
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 2rem;
-  margin: 2rem 0;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px; /* Reduced gap */
+  margin-bottom: 20px;
 }
 
+/* Individual Feature Styling */
 .feature {
-  padding: 1.5rem;
-  border-radius: 0.75rem;
-  background-color: var(--secondary-color);
-  transition: var(--transition);
+  background: #f1f9f7; /* Light pastel background for features */
+  border-radius: 12px;
+  padding: 15px; /* Reduced padding */
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .feature:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--card-shadow);
+  transform: translateY(-5px); /* Less intense hover effect */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
 }
 
 .feature-icon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 2rem; /* Smaller icon size */
+  color: #6aaf9e; /* Calming teal color */
+  margin-bottom: 12px;
 }
 
 .feature h3 {
-  margin-bottom: 0.5rem;
-  color: var(--text-primary);
+  font-size: 1.3rem; /* Smaller font size for feature heading */
+  color: #3a3a3a;
+  margin-bottom: 8px;
+  font-weight: 500;
 }
 
 .feature p {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
+  color: #777777; /* Light gray for text */
+  font-size: 0.95rem; /* Smaller font size for description */
+  line-height: 1.4;
+  margin-bottom: 0;
 }
 
-/* Button Styles */
+/* Button Styling */
 .primary-button {
-  background-color: var(--primary-color);
+  background-color: #6aaf9e; /* Soft teal background */
   color: white;
-  padding: 0.75rem 2rem;
-  border-radius: 0.5rem;
+  width: 200px;
   border: none;
-  font-weight: 600;
+  border-radius: 25px;
+  padding: 10px 25px; /* Smaller padding */
+  font-size: 1rem; /* Smaller button font size */
   cursor: pointer;
-  transition: var(--transition);
-  margin-top: 50px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 15px;
 }
 
 .primary-button:hover {
-  background-color: var(--primary-hover);
-  transform: translateY(-2px);
+  background-color: #4c8c73; /* Darker teal for hover effect */
+  transform: scale(1.05);
 }
+
+.note {
+  font-size: 0.85rem; /* Smaller font size for the note */
+  color: #666666;
+  margin-top: 12px;
+}
+
+/* Media Query for Responsiveness */
+@media screen and (max-width: 768px) {
+  .feature-grid {
+    grid-template-columns: 1fr; /* Single column on small screens */
+  }
+
+  .card-content h2 {
+    font-size: 1.4rem; /* Adjusted header font size for mobile */
+  }
+
+  .card-content .subtitle {
+    font-size: 0.95rem; /* Adjusted subtitle font size for mobile */
+  }
+
+  .primary-button {
+    width: 100%; /* Full-width button on small screens */
+  }
+
+  .feature h3 {
+    font-size: 1.2rem; /* Adjusted feature heading font size for mobile */
+  }
+
+  .feature p {
+    font-size: 0.9rem; /* Adjusted feature paragraph font size for mobile */
+  }
+}
+
 
 .back-button {
   background: none;
@@ -174,7 +263,6 @@ body {
   color: var(--primary-color);
 }
 
-/* Assessment Styles */
 .assessment {
   max-width: 800px;
   margin: 2rem auto;
@@ -193,7 +281,7 @@ body {
   background-color: var(--secondary-color);
   border-radius: 4px;
   margin-bottom: 2rem;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .progress-fill {
@@ -226,155 +314,6 @@ body {
 }
 
 .option-button {
-  background-color: var(--secondary-color);
-  border: 2px solid transparent;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  text-align: left;
-  cursor: pointer;
-  transition: var(--transition);
-  font-size: 1rem;
-  color: var(--text-primary);
-}
-
-.option-button:hover {
-  border-color: var(--primary-color);
-  background-color: white;
-}
-
-/* Results Styles */
-.results {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
-.results-card {
-  background-color: var(--background);
-  border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: var(--card-shadow);
-  text-align: center;
-}
-
-.score-section {
-  margin: 2rem 0;
-}
-
-.score-circle {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  border: 8px solid var(--primary-color);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-}
-
-.score-value {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: var(--primary-color);
-}
-
-.score-label {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-}
-
-.results-content {
-  text-align: left;
-  margin: 2rem 0;
-}
-
-.insight-section,
-.recommendations-section {
-  margin-bottom: 2rem;
-}
-
-.recommendation-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.recommendation-card {
-  background-color: var(--secondary-color);
-  padding: 1.5rem;
-  border-radius: 0.75rem;
-  transition: var(--transition);
-}
-
-.recommendation-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--card-shadow);
-}
-
-.recommendation-card h4 {
-  color: var(--primary-color);
-  margin-bottom: 0.5rem;
-}
-
-.recommendation-card p {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .nav-links {
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .feature-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .recommendation-cards {
-    grid-template-columns: 1fr;
-  }
-
-  .assessment-card,
-  .results-card {
-    padding: 1.5rem;
-  }
-
-  .question-text {
-    font-size: 1.1rem;
-  }
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.welcome-card,
-.assessment-card,
-.results-card {
-  animation: fadeIn 0.5s ease-out;
-}
-/* Previous CSS remains the same until the options styling */
-
-/* Updated Options Styling */
-.options {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.option-button {
   position: relative;
   padding: 1.2rem;
   border-radius: 0.8rem;
@@ -384,7 +323,7 @@ body {
   font-size: 1rem;
   color: #ffffff;
   border: none;
-  overflow: hidden;
+  overflow: auto;
   font-weight: 500;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -463,84 +402,112 @@ body {
   ring-offset: 2px;
 }
 
-/* Selected state */
-.option-button.selected {
-  transform: translateX(10px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+/* Footer */
+footer {
+  padding: 2rem;
+  background-color: var(--secondary-color);
+  text-align: center;
 }
 
-.option-button.selected::after {
-  content: "✓";
-  opacity: 1;
-  right: 1rem;
+footer p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .option-button {
-    padding: 1rem;
-    font-size: 0.95rem;
-  }
-
-  .option-button::after {
-    right: 1rem;
-  }
+/* Results section */
+.results {
+  margin-top: 3rem;
+  background-color: var(--secondary-color);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: var(--card-shadow);
+  max-height: 400px; /* Adjust height for testing */
+  overflow-y: auto; /* Enable scrolling */
+}
+/* Chatbot logo toggle (replaces the button) */
+/* Chatbot logo toggle (replaces the button) */
+.chatbot-toggle-logo {
+  position: fixed;
+  bottom: 10px; /* Adjusted for proper positioning */
+  right: 20px;
+  width: 80px;  /* Increased the size of the logo */
+  height: 80px; /* Increased the size of the logo */
+  cursor: pointer;
+  z-index: 1000;
 }
 
-/* Add animation for option appearance */
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+/* Styling for the logo image */
+.chatbot-toggle-logo .chatbot-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image fits perfectly within the container */
+  border-radius: 50%; /* Makes the logo a circle */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, opacity 0.3s ease;
 }
 
-.option-button {
-  animation: slideIn 0.3s ease-out forwards;
+/* Hover effect for the logo */
+.chatbot-toggle-logo:hover .chatbot-logo {
+  transform: scale(1.1); /* Slight zoom on hover */
 }
 
-.option-button:nth-child(1) {
-  animation-delay: 0.1s;
-}
-.option-button:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.option-button:nth-child(3) {
-  animation-delay: 0.3s;
-}
-.option-button:nth-child(4) {
-  animation-delay: 0.4s;
-}
 
-.Recommentations_button {
-  margin-top: 145px;
-  margin-left: 200px;
-  height: 40px;
-  width: 300px;
-  padding: 10px;
-  background-color: #6366f1;
-  font-weight: bold;
-  color: white;
-  border: 2px solid transparent;
-  border-radius: 5px;
-  margin-bottom: -100px;
-  position: absolute;
-}
-.options > div > input {
-  position: relative;
-  padding-top: 0px;
-  margin-left: -360px;
-}
-.options > div > label {
-  position: relative;
-  margin-top: -25px;
-  margin-left: 20px;
-}
-.options {
+/* Chatbot container styles */
+.chatbot-container {
+  position: fixed;
+  bottom: 70px; /* Adjusted to make space for the logo */
+  right: 20px;
+  width: 350px;
+  max-height: 70vh;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  z-index: 999;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
+}
+
+/* Chatbot container header and message styles */
+.chatbot-container .header {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.chatbot-container .messages {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.chatbot-container .message {
+  padding: 10px;
+  margin-bottom: 8px;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  max-width: 80%;
+}
+
+.chatbot-container .message.user {
+  background-color: #e0f7fa;
+  align-self: flex-end;
+}
+
+.chatbot-container .message.bot {
+  background-color: #f1f8e9;
+  align-self: flex-start;
+}
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  background: transparent;
+  border: none;
+  color: red;
+  cursor: pointer;
 }

@@ -1,8 +1,9 @@
 import "@iconscout/unicons/css/line.css";
 import { useState } from "react";
 import { Loginpage } from "../Login/loginPage";
-import "../Login/loginpage.css";
+ import "../Login/loginpage.css";
 import "./signup.css";
+
 
 const Signup = () => {
   // State for Page Showing
@@ -32,6 +33,7 @@ const Signup = () => {
 
     uniconColor(event);
   };
+
 
   // Name validation
   const nameValidator = (event) => {
@@ -117,116 +119,79 @@ const Signup = () => {
     storePersonData();
     setPage(() => (page === "signup" ? "" : "signup"));
   };
-
-  // Color changing for Unicons
   const uniconColor = (event) => {
-    setTimeout(
-      () =>
-        (event.target.parentElement.querySelector(".uil").style.color =
-          "black"),
-      10000
-    );
-    event.target.parentElement.querySelector(".uil").style.color = "blue";
-  };
-
-  // Conditional rendering to switch between login and signup pages
+    // Select the icon element inside the parent element
+    const icon = event.target.parentElement.querySelector(".uil");
+    
+    if (icon) {
+        icon.style.color = "blue";
+                setTimeout(() => {
+            icon.style.color = "black";
+        }, 10000);
+    }
+};
   return page === "signup" ? (
-    <>
-      <div className="signupbody">
-        <h1>Create Your Account</h1>
-        <br />
-        <br />
-        <br />
-        <div className="signupform_Page">
-          <form onSubmit={GoToSignInPage}>
-            <div className="signupinput_field">
-              <i className="uil uil-user"></i>
-              <label htmlFor="Firstname">First Name</label>
-              <br />
-              <input
-                type="text"
-                name="Firstname"
-                id="Firstname"
-                placeholder="Enter The First Name"
-                onChange={changeValue}
-                required
-              />
-            </div>
-            <div className="signupinput_field">
-              <i className="uil uil-user"></i>
-              <label htmlFor="Lastname">Last Name</label>
-              <br />
-              <input
-                type="text"
-                name="Lastname"
-                id="Lastname"
-                placeholder="Enter The Last Name"
-                onChange={changeValue}
-                required
-              />
-            </div>
-            <div className="signupinput_field">
-              <i className="uil uil-envelope"></i>
-              <label htmlFor="Email">Email</label>
-              <mark className="requiredEmail">*</mark>
-              <br />
-              <input
-                type="email"
-                name="Email"
-                id="Email"
-                placeholder="Enter The Email"
-                onChange={changeValue}
-                required
-              />
-            </div>
-            <div className="signupinput_field">
-              <i className="uil uil-lock"></i>
-              <label htmlFor="password">Password</label>{" "}
-              <mark className="requiredPassword">*</mark>
-              <br />
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="Enter the Password"
-                onChange={changeValue}
-                required
-              />
-              <i
-                className="uil uil-eye-slash"
-                onClick={eyeShow}
-                style={{ cursor: "pointer" }}
-              ></i>
-            </div>
-            <p className="signuperrorShow">{errorMessage}</p>
-            <div className="signupinput_field">
-              <input type="submit" value="Register" className="register" />
-              <br />
-              Already Registered?
-              <button
-                style={{
-                  backgroundColor: "transparent",
-                  border: "none",
-                  color: "blue",
-                  cursor: "pointer",
-                }}
-                onClick={GoToSignInPage}
-              >
-                Signin
-              </button>
-              <br />
-              <br />
-              <br />
-              <br />
-              <br />
-            </div>
-          </form>
-        </div>
+
+<div className="signup-container">
+      <div className="image-container">
+        <img src="https://www.kristen-mcclure-therapist.com/wp-content/uploads/2022/05/adhd-self-compassion-and-mindfulness.webp" alt="Signup" className="signup-image" 
+        style={{height:"600px", width:"490px"}}/>
       </div>
-    </>
+      <div className="form-container">
+        <h1>Create Your Account</h1>
+        <form onSubmit={GoToSignInPage}>
+          <div className="input-group">
+            <label htmlFor="Firstname">First Name</label>
+            <input
+              type="text"
+              id="Firstname"
+              placeholder="Enter First Name"
+              onChange={changeValue}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="Lastname">Last Name</label>
+            <input
+              type="text"
+              id="Lastname"
+              placeholder="Enter Last Name"
+              onChange={changeValue}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="Email">Email</label>
+            <input
+              type="email"
+              id="Email"
+              placeholder="Enter Email"
+              onChange={changeValue}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter Password"
+              onChange={changeValue}
+              required
+            />
+            <i className="uil uil-eye-slash" onClick={eyeShow}></i>
+          </div>
+          <p className="error-message">{errorMessage}</p>
+          <button type="submit" className="submit-btn">Register</button>
+        </form>
+        <p>
+          Already have an account?{" "}
+          <button className="signin-btn" onClick={GoToSignInPage}>Sign In</button>
+        </p>
+      </div>
+    </div>
   ) : (
     <Loginpage formDatas={formData}></Loginpage>
   );
 };
-
 export default Signup;

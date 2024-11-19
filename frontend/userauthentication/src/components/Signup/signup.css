@@ -1,125 +1,121 @@
-/* Main container styles */
-.signupbody {
+/* signup.css */
+.signup-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  padding: 2rem;
-  min-height: 100vh;
-  background-color: #f5f5f5;
+  justify-content: center;
+  height: 100vh;
+  padding: 20px;
+  background-color: #f9f9f9;
 }
 
-.signupbody h1 {
+.image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.signup-image {
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}
+
+.form-container {
+  flex: none;
+  max-width: 500px; /* Adjust the width as needed */
+  width: 100%;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
   color: #333;
-  font-size: 2rem;
-  margin-bottom: 1rem;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  position: relative; 
+  width: 400px;/* Ensures proper positioning for icons */
+}
+
+.input-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  padding-right: 35px; /* Leave space for the icon */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #007bff;
+}
+
+.input-group i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #777;
+}
+
+.error-message {
+  font-size: 12px;
+  color: red;
+  margin-bottom: 10px;
   text-align: center;
 }
 
-/* Form container styles */
-.signupform_Page {
-  background-color: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  width: 1000px;
-  max-width: 450px;
-}
-
-/* Input field container styles */
-.signupinput_field {
-  position: relative;
-  margin-bottom: 1.5rem;
-}
-
-/* Label styles */
-.signupinput_field label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #666;
-  font-size: 0.9rem;
-}
-
-/* Required field markers */
-.requiredEmail,
-.requiredPassword {
-  color: #ff4444;
-  background: none;
-  padding: 0 2px;
-}
-
-/* Input styles */
-.signupinput_field input {
+.submit-btn {
   width: 100%;
-  padding: 0.75rem;
-  padding-left: 2.5rem;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
   border: none;
-  border-bottom: 2px solid #ddd;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
-  background-color: transparent;
-}
-
-.signupinput_field input:focus {
-  outline: none;
-  border-bottom-color: #2196f3;
-}
-
-/* Icon styles */
-.signupinput_field .uil {
-  position: absolute;
-  left: 0;
-  bottom: 12px;
-  font-size: 1.2rem;
-  color: #666;
-  transition: color 0.3s ease;
-}
-
-/* Submit button styles */
-.signupinput_field input[type="submit"] {
-  background-color: #2196f3;
-  color: white;
-  padding: 0.75rem;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
-  border: none;
-  width: 100%;
-  margin-top: 1rem;
   transition: background-color 0.3s ease;
 }
 
-.signupinput_field input[type="submit"]:hover {
-  background-color: #1976d2;
+.submit-btn:hover {
+  background-color: #0056b3;
 }
 
-/* Error message styles */
-.signuperrorShow {
-  color: #ff4444;
-  font-size: 0.85rem;
-  margin-top: -0.5rem;
-  margin-bottom: 1rem;
-}
-
-/* Eye icon for password visibility */
-.signupinput_field .uil-eye,
-.signupinput_field .uil-eye-slash {
-  position: absolute;
-  right: 0;
-  bottom: 12px;
-  left: auto;
+.signin-btn {
+  background: none;
+  border: none;
+  color: #007bff;
   cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+  padding: 0;
 }
 
-/* Responsive design */
-@media (max-width: 480px) {
-  .signupform_Page {
-    padding: 1.5rem;
-  }
-
-  .signupbody {
-    padding: 1rem;
-  }
-
-  .signupbody h1 {
-    font-size: 1.75rem;
-  }
+.signin-btn:hover {
+  color: #0056b3;
+}
+.uil {
+  color: black; /* Set the default color of the icon */
+  transition: color 0.3s ease; /* Optional: smooth transition for color change */
 }
